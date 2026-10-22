@@ -1,0 +1,78 @@
+{
+    "name": "ClassificationLog",
+    "type": "object",
+    "properties": {
+        "book_title": {
+            "type": "string",
+            "description": "Judul buku yang diklasifikasi"
+        },
+        "author": {
+            "type": "string",
+            "description": "Pengarang buku"
+        },
+        "subject_analysis": {
+            "type": "string",
+            "description": "Analisis subjek utama"
+        },
+        "discipline": {
+            "type": "string",
+            "description": "Disiplin ilmu dominan"
+        },
+        "approach": {
+            "type": "string",
+            "description": "Pendekatan atau topik khusus"
+        },
+        "work_form": {
+            "type": "string",
+            "enum": [
+                "teori",
+                "praktik",
+                "pendidikan",
+                "sejarah",
+                "umum"
+            ],
+            "description": "Bentuk karya"
+        },
+        "geographic_area": {
+            "type": "string",
+            "description": "Wilayah geografis jika ada"
+        },
+        "selected_ddc": {
+            "type": "string",
+            "description": "Nomor DDC yang dipilih"
+        },
+        "alternative_ddc": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Nomor DDC alternatif"
+        },
+        "justification": {
+            "type": "string",
+            "description": "Alasan pemilihan nomor DDC"
+        },
+        "manual_override": {
+            "type": "boolean",
+            "default": false,
+            "description": "Apakah pustakawan memilih nomor berbeda"
+        },
+        "override_reason": {
+            "type": "string",
+            "description": "Alasan jika manual override"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "draft",
+                "completed",
+                "reviewed"
+            ],
+            "default": "draft"
+        }
+    },
+    "required": [
+        "book_title",
+        "selected_ddc"
+    ]
+}
