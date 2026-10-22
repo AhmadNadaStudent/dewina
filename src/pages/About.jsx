@@ -21,6 +21,13 @@ import { Badge } from "@/components/ui/badge";
 import PageHeader from '@/components/common/PageHeader';
 import GradientCard from '@/components/common/GradientCard';
 
+// Import foto dari src/img
+import imgAdvisor from '@/img/Dr. Sokhibul Ansor, S.Sos., M.Hum..jpeg';
+import imgNovelia from '@/img/Novelia Eka Damayanti.png';
+import imgAhmad from '@/img/Ahmad Nada Fadilla Wildansyah.jpg';
+import imgAffan from '@/img/Mohammad Affan Ghoffar.jpeg';
+import imgRachmad from '@/img/Rachmad Al Huda.jpeg';
+
 // Data Tim Pencipta & Pembimbing sesuai Buku Panduan DEWINA
 const advisor = {
     name: "Dr. Sokhibul Ansor, S.Sos., M.Hum.",
@@ -28,6 +35,7 @@ const advisor = {
     institution: "Universitas Negeri Malang",
     description: "Membimbing konseptualisasi klasifikasi, akurasi metodologi DDC, serta relevansi pedagogis bagi pustakawan.",
     avatarInitial: "SA",
+    image: imgAdvisor,
     color: "from-amber-500 to-orange-600",
     bgBadge: "bg-amber-100 text-amber-800 border-amber-200"
 };
@@ -39,6 +47,7 @@ const creators = [
         institution: "Universitas Negeri Malang",
         description: "Penyusunan alur analisis subjek, pedoman penggunaan, dan evaluasi struktur DDC.",
         avatarInitial: "ND",
+        image: imgNovelia,
         color: "from-pink-500 to-rose-600",
         badge: "Pencipta"
     },
@@ -48,6 +57,7 @@ const creators = [
         institution: "Universitas Negeri Malang",
         description: "Pengembangan sistem interaktif, logika penelusuran hierarki, dan integrasi modul.",
         avatarInitial: "AW",
+        image: imgAhmad,
         color: "from-violet-500 to-purple-600",
         badge: "Pencipta"
     },
@@ -57,6 +67,7 @@ const creators = [
         institution: "Universitas Negeri Malang",
         description: "Perancangan basis data notasi DDC, studi kasus, serta pengujian konsistensi klasifikasi.",
         avatarInitial: "AG",
+        image: imgAffan,
         color: "from-blue-500 to-indigo-600",
         badge: "Pencipta"
     },
@@ -66,6 +77,7 @@ const creators = [
         institution: "Universitas Negeri Malang",
         description: "Optimalisasi antarmuka pengguna, navigasi pemandu bertahap, dan dokumentasi sistem.",
         avatarInitial: "RH",
+        image: imgRachmad,
         color: "from-emerald-500 to-teal-600",
         badge: "Pencipta"
     }
@@ -211,10 +223,20 @@ export default function About() {
 
                     <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md transition-shadow">
                         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                            {/* Avatar Placeholder */}
+                            {/* Foto Dosen Pembimbing */}
                             <div className="relative group shrink-0">
-                                <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-3xl shadow-lg shadow-orange-100 ring-4 ring-orange-50">
-                                    {advisor.avatarInitial}
+                                <div className="w-28 h-28 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center shadow-lg shadow-orange-100 ring-4 ring-orange-100">
+                                    {advisor.image ? (
+                                        <img
+                                            src={advisor.image}
+                                            alt={advisor.name}
+                                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-3xl">
+                                            {advisor.avatarInitial}
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="absolute -bottom-2 -right-2 p-1.5 bg-amber-500 rounded-full text-white shadow">
                                     <GraduationCap className="w-4 h-4" />
@@ -254,10 +276,20 @@ export default function About() {
                                 transition={{ delay: idx * 0.1 }}
                                 className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm hover:shadow-lg transition-all flex flex-col items-center text-center group"
                             >
-                                {/* Placeholder Foto */}
+                                {/* Foto Tim */}
                                 <div className="relative mb-4">
-                                    <div className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-bold text-2xl shadow-md group-hover:scale-105 transition-transform ring-4 ring-slate-50`}>
-                                        {member.avatarInitial}
+                                    <div className="w-24 h-24 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300 ring-4 ring-violet-50">
+                                        {member.image ? (
+                                            <img
+                                                src={member.image}
+                                                alt={member.name}
+                                                className="w-full h-full object-cover object-top"
+                                            />
+                                        ) : (
+                                            <div className={`w-full h-full bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-bold text-2xl`}>
+                                                {member.avatarInitial}
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="absolute -bottom-2 -right-2 p-1 bg-white rounded-full shadow">
                                         <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-white text-[10px] font-bold">
